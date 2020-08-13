@@ -1,3 +1,4 @@
+load(file = "Final_Data_Group_71.RData")
 
 if(!require("tidyverse")){
   install.packages("tidyverse")
@@ -156,7 +157,7 @@ ui <- navbarPage("Group 71"
 
 
 server <- function(input,output) {
- filterNA <- Final_Data_Group_73 %>%
+ filterNA <- Final_Data_Group_71 %>%
     filter(!is.na(min_Fehlerhaft_Fahrleistung))
   
 
@@ -175,7 +176,7 @@ server <- function(input,output) {
      
     # =========== rendering plot for year with the body type selected as all =========== #
     if (x() == "12 months" & y() == 0){
-     Final_Data_Group_73 %>%
+     Final_Data_Group_71 %>%
         filter(!is.na(min_Fehlerhaft_Fahrleistung)) %>%
         mutate(Year = as.factor(format(Produktionsdatum,"%Y"))) %>%
         mutate(Body_Type = as.factor(Body_Type)) %>%
@@ -194,7 +195,7 @@ server <- function(input,output) {
     }
       #=========== rendering plot for monthly with the body type selected as all =========== #
       else if (x() == "1 month" & y() == 0){
-       Final_Data_Group_73 %>%
+        Final_Data_Group_71 %>%
           filter(!is.na(min_Fehlerhaft_Fahrleistung)) %>%
           mutate(Month = as.factor(as.yearmon(Produktionsdatum))) %>%
           mutate(Body_Type = as.factor(Body_Type)) %>%
@@ -213,7 +214,7 @@ server <- function(input,output) {
       }
       #=========== rendering plot for quarter with the body type selected as all =========== #
       else if (x() == "4 months" & y() == 0){
-        Final_Data_Group_73 %>%
+        Final_Data_Group_71 %>%
           filter(!is.na(min_Fehlerhaft_Fahrleistung)) %>%
           mutate(Quarter = as.factor(as.yearqtr(Produktionsdatum))) %>%
           mutate(Body_Type = as.factor(Body_Type)) %>%
@@ -231,7 +232,7 @@ server <- function(input,output) {
       }
       #=========== rendering plot for yearly with the body type selected as one of two given =========== #
          else if (x() == "12 months"){
-           Final_Data_Group_73 %>%
+           Final_Data_Group_71 %>%
              filter(!is.na(min_Fehlerhaft_Fahrleistung)) %>%
              mutate(Year = as.factor(format(Produktionsdatum,"%Y"))) %>%
              mutate(Body_Type = as.factor(Body_Type)) %>%
@@ -247,7 +248,7 @@ server <- function(input,output) {
          }
       #=========== rendering plot for monthly with the body type selected as one of two given =========== #
       else if (x() == "1 month") {
-        Final_Data_Group_73 %>%
+        Final_Data_Group_71 %>%
           filter(!is.na(min_Fehlerhaft_Fahrleistung)) %>%
           mutate(Month = as.factor(as.yearmon(Produktionsdatum))) %>%
           mutate(Body_Type = as.factor(Body_Type)) %>%
@@ -264,7 +265,7 @@ server <- function(input,output) {
       }
       #=========== rendering plot for quarterly with the body type selected as one of two given =========== #
       else {
-        Final_Data_Group_73 %>%
+        Final_Data_Group_71 %>%
           filter(!is.na(min_Fehlerhaft_Fahrleistung)) %>%
           mutate(Quarter = as.factor(as.yearqtr(Produktionsdatum))) %>%
           mutate(Body_Type = as.factor(Body_Type)) %>%
@@ -289,7 +290,7 @@ server <- function(input,output) {
          #=========== rendering plot for yearly  =========== #
      
      if (x() == "12 months"){
-       Final_Data_Group_73 %>%
+       Final_Data_Group_71 %>%
          filter(!is.na(min_Fehlerhaft_Fahrleistung)) %>%
          mutate(Year = as.factor(format(Produktionsdatum,"%Y"))) %>%
          mutate(Body_Type = as.factor(Body_Type)) %>%
@@ -305,7 +306,7 @@ server <- function(input,output) {
      }
          #=========== rendering plot for monthly  =========== #
      else if (x() == "1 month" ){
-       Final_Data_Group_73 %>%
+       Final_Data_Group_71 %>%
          filter(!is.na(min_Fehlerhaft_Fahrleistung)) %>%
          mutate(Month = as.factor(as.yearmon(Produktionsdatum))) %>%
          mutate(Body_Type = as.factor(Body_Type)) %>%
@@ -321,7 +322,7 @@ server <- function(input,output) {
      }
         #=========== rendering plot for quarterlys  =========== #
      else {
-       Final_Data_Group_73 %>%
+       Final_Data_Group_71 %>%
          filter(!is.na(min_Fehlerhaft_Fahrleistung)) %>%
          mutate(Quarter = as.factor(as.yearqtr(Produktionsdatum))) %>%
          mutate(Body_Type = as.factor(Body_Type)) %>%
